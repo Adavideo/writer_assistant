@@ -3,12 +3,12 @@ from langchain.prompts.chat import (
     SystemMessagePromptTemplate,
     HumanMessagePromptTemplate,
 )
-from instructions_templates import context_template, tasks_template
-from manage_storage import get_tematic
+from instructions_templates import context_template, tasks_template, information_template
+from manage_storage import get_tematic, get_episode_summary
 
 
 def get_instructions_template():
-    instructions_template = context_template + tasks_template
+    instructions_template = context_template + information_template + tasks_template
     return instructions_template
 
 def generate_messages(episode_number, user_input):
@@ -21,5 +21,6 @@ def generate_messages(episode_number, user_input):
     chat_prompt = ChatPromptTemplate.from_messages([system_message_prompt, human_message_prompt])
     messages = chat_prompt.format_messages( tematic=get_tematic(),
                                             episode_number=episode_number,
+                                            episode_summary = get_episode_summary(episode_number),
                                             user_input=user_input)
     return messages
