@@ -7,7 +7,7 @@ chat_model = ChatOpenAI()
 episode_number = select_episode()
 user_input = "."
 while user_input !="":
-    user_input=input("user: ")
+    user_input=input("How can I help you?: ")
     messages = generate_messages(episode_number, user_input)
     print(messages[0])
     output = chat_model.predict_messages(messages)
