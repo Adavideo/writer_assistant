@@ -160,3 +160,5 @@ cython_debug/
 #.idea/
 
 load_keys.py
+json
+./json/*

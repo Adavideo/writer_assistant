@@ -4,6 +4,7 @@ from langchain.prompts.chat import (
     HumanMessagePromptTemplate,
 )
 from instructions_templates import context_template, tasks_template
+from manage_storage import get_tematic
 
 
 def get_instructions_template():
@@ -18,5 +19,6 @@ def generate_messages(user_input):
     human_message_prompt = HumanMessagePromptTemplate.from_template(human_template)
     #Generate messages
     chat_prompt = ChatPromptTemplate.from_messages([system_message_prompt, human_message_prompt])
-    messages = chat_prompt.format_messages(user_input=user_input)
+    messages = chat_prompt.format_messages( tematic=get_tematic(),
+                                            user_input=user_input)
     return messages
