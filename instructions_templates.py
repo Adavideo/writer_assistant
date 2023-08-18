@@ -1,4 +1,4 @@
-context_template = "You are a helpfull writer assistant helping with {tematic}."
+context_template = "You are a helpfull writer assistant helping with {tematic}. On this session you are going to work on episode {episode_number}. "
 
 tasks_template = """
 Your task is to help the user expand and improve the work that have been done, following the instructions given by the user.
